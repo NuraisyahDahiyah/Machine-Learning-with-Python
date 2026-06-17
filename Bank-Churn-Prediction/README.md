@@ -103,11 +103,35 @@ Used SelectKBest to double-check the top 5 features most related to the target. 
 ## Model Testing and Comparison 
 **Resampling and Imbalance Handling**
 
+The churn dataset is highly imbalanced because there are far fewer churned customers than existing ones, which can cause the predictive model to be biased toward the majority class. To fix this and improve accuracy, two balancing techniques were used: SMOTE, which creates fake samples of the minority class only within the training folds to prevent data leakage, and class weighting for Random Forest and Logistic Regression, which penalizes the models more heavily for misclassifying churn cases.
+
+For the model selection phase, three specific classification algorithms were chosen to compare and find the best fit for predicting credit card churn:
+1. **Logistic Regression (LR):** Chosen because it is simple, fast, and easy to interpret.
+2. **Random Forest (RF):** Chosen because it handles non-linear relationships well, offers higher accuracy, and prevents overfitting by using multiple decision trees.
+3. **XGBoost:** Chosen for its high accuracy and ability to handle complex patterns and class imbalances when properly tuned.
+
 *Model Validation*
+
+While a standard train-test split was used initially, it can break the balance of class labels in the test set, leading to biased and unreliable performance estimates. To fix this, Stratified K-Fold Cross-Validation was implemented to break the dataset into *k* equal parts, making sure the ratio of major and minor classes stays the same in every single fold.
 
 ## Model Testing
 
+To handle class imbalance, three variations of each classifier were tested using *imblearn.Pipeline* to prevent data leakage: 1) no balancing 2) SMOTE oversampling 3) class weight balancing. Hyperparameter tuning was performed inside the pipeline using *GridSearchCV* with a stratified 5-fold cross-validation to find the best settings for key parameters, and the results were evaluated using ROC curves and confusion matrices. 
+
+Separately from the grid search, the final models were checked using a 5-fold Stratified K-Fold cross-validation to keep class distributions consistent across data splits. Ultimately, the models were evaluated and compared using accuracy, F1-scores, and class-specific recall, focusing heavily on class 0 (churners) to meet the project's main objective.
+
 **Feature Importance**
+
+Here is how feature importance is extracted for each specific model:
+1. **Random Forest:** Uses a feature importance plot that calculates how much each feature helps reduce "Gini impurity" (essentially measuring how much cleaner the data splits get) across all the decision trees.
+2. **Logistic Regression:** Uses the model's learned coefficients. A positive number means a feature makes a customer more likely to churn, a negative number means less likely, and the actual size of the number shows how powerful that feature's influence is.
+3. **XGBoost:** Uses an importance plot set to measure "gain" instead of "weight." Gain calculates the average improvement in accuracy whenever a feature is used to split data, giving a much truer look at which features the model actually relies on most.
+
+<img width="468" height="277" alt="image" src="https://github.com/user-attachments/assets/30f3a897-531c-48bf-a238-cc78fa4168fe" />
+<img width="468" height="278" alt="image" src="https://github.com/user-attachments/assets/cb8d412e-f645-4c31-936d-55becf58e0a3" />
+<img width="468" height="279" alt="image" src="https://github.com/user-attachments/assets/aa5e4307-f960-40e9-8be6-504ba5de9f11" />
+
+
 
 **ROC Curve**
 
