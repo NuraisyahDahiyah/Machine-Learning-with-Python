@@ -165,6 +165,18 @@ The performance breakdowns for each algorithm are as follows:
 
 **Results from from Stratified K Fold with Cross Validation**
 
+Stratified K-Fold cross-validation confirmed that the models are reliable and not overfitted. Among the three Random Forest configurations, the SMOTE-trained version achieved the highest recall and F1-score for identifying churners (Class 0). For Logistic Regression, Class Weighting proved to be the best option to catch the greatest number of churners, as SMOTE provided no significant improvement. For XGBoost, Weighted XGB performed best because it delivered a 4.7% increase in recall over the plain version, whereas SMOTE suffered performance drops in almost every category. Ultimately, when ranking all models by their specific ability to recall churners, Weighted XGBoost ranks first (0.916), followed by Random Forest with SMOTE (0.876), and lastly Logistic Regression with Class Weighting (0.825).
+
+<img width="480" height="182" alt="image" src="https://github.com/user-attachments/assets/55fbbaea-fb19-42db-be08-7e1eda7ccfe2" />
+<img width="478" height="170" alt="image" src="https://github.com/user-attachments/assets/93396c7d-fea8-4828-83c5-50e83250df7b" />
+<img width="478" height="170" alt="image" src="https://github.com/user-attachments/assets/c2801af4-4c01-47be-8266-58ca42bfa82c" />
+
 ## Ending Remarks
+
+The primary goal of this project was to identify customer churn indicators and build machine learning models with at least 80% accuracy. The results confirmed that churn is driven by a combination of factors rather than a single feature, with total revolving balance, transaction amount, and transaction count emerging as the most significant common indicators. 
+
+Across the three tested algorithms (Logistic Regression, Random Forest, and XGBoost), XGBoost with class weighting was selected as the most reliable, balanced, and stable model, consistently achieving low false positive counts and over 80% accuracy across data splits.
+
+To help banks translate these insights into practice, three key strategies are recommended: setting up real-time monitoring dashboards with early warning alerts, launching tailored retention campaigns designed specifically to re-engage inactive or younger customer segments, and deploying automated, personalized engagement nudges via SMS or email to intercept customers who have been inactive for two months or show declining financial behavior.
 
 
