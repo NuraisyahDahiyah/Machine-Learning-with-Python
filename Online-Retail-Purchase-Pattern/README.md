@@ -13,37 +13,38 @@ By using Association Rule Mining, we will investigate customer’s purchasing pa
 ## Data Pre-processing 
 Data preprocessing is done to identify present issues in the dataset such as missing values and duplicate data. This is done by removing these missing and redundant data points to ensure data quality for better outcome and accuracy of the Apriori algorithm and Associate Rule Mining Technique implemented. Items are standardized (converted to lowercase and spaces are removed) to reduce inconsistencies because of formatting differences. Then, the data is transformed into a list of lists, each of which represents the goods a consumer has purchased in a single online transaction. This is so that the frequency of itemsets can be as accurately as possible determined by the Apriori algorithm.
 
-<img width="509" height="95" alt="image" src="https://github.com/user-attachments/assets/f1ec4687-f9fc-47d8-94f7-f7e33c4f3154" />
+<img width="421" height="424" alt="image" src="https://github.com/user-attachments/assets/5425e1b9-2076-491a-8eda-e03c96efd0f8" />
+
+<img width="501" height="86" alt="image" src="https://github.com/user-attachments/assets/0cc1e052-297d-4087-b906-d6851d4e53f8" />
 
 ## Frequent Itemsets Generation with Apriori Algorithm
 
 To generate frequent itemsets for this online retail transaction, we will implement data transformation to convert the transaction data into one-hot encoded format and apply Apriori algorithm. This is then followed by visualisation of the distribution of the itemsets and the top frequent items. The Apriori algorithm is applied to on-hot encoded transactional data in which each column represents an item and each row a transaction. Setting a low support threshold is also crucial in capturing a wider range of item combinations, even the ones that are less common but still relevant to purchasing patterns. The distribution of itemset sizes depicts the plausible combinations items can be grouped together in purchases. These insights form the foundation for identifying popular product combinations and the customer's purchasing behaviours.
 
-<img width="278" height="288" alt="image" src="https://github.com/user-attachments/assets/3dfca284-8e27-4a8c-9f7c-00f37d895a9f" />
+<img width="269" height="279" alt="image" src="https://github.com/user-attachments/assets/40e48e6c-7176-45b3-89fc-ce3c25d32bee" />
 
-<img width="280" height="295" alt="image" src="https://github.com/user-attachments/assets/5bc20499-e1a1-4a3f-aa47-9d043b744c6e" />
-
-<img width="330" height="131" alt="image" src="https://github.com/user-attachments/assets/898db368-9016-412a-b61f-9ab1dd948802" />
 
 ## Associate Rules Based on Frequent Itemsets
 
 Frequent Itemsets is used to create association rules and filter them depending on the support confidence and lift. Support is a measure of an item's default popularity that may be computed by dividing the total number of transactions by the number of transactions that contain a specific item. Suppose we want to find support for item B, this can be calculated as:
 
-<img width="468" height="41" alt="image" src="https://github.com/user-attachments/assets/93b82a18-3b49-4a63-9338-22c16e1aad90" />
+<img width="846" height="182" alt="image" src="https://github.com/user-attachments/assets/7cd853e4-6389-45c3-96d8-6ccbae1e8106" />
+
+<img width="756" height="324" alt="image" src="https://github.com/user-attachments/assets/cc406170-7fca-4777-bb33-2c5846c8aade" />
 
 Confidence is the probability that, for instance, if item A is purchased, item B will also be purchased. It can be computed as the number of transactions in which A and B are purchased together, divided by the total number of transactions in which A is purchased. Mathematically, it can be represented as:
 
-<img width="468" height="43" alt="image" src="https://github.com/user-attachments/assets/0f95ed92-0a7c-40e8-8ea4-c097c6c11008" />
+<img width="1142" height="164" alt="image" src="https://github.com/user-attachments/assets/0f2d65b7-7cdd-430e-84d4-f7b088b4be71" />
 
 Lastly, Lift refers to the increase in the ratio of, for example, sale of item B when item A is sold. It tells us that the likelihood of buying item B and item A together is XXX times more than the likelihood of just buying item B. Lift of greater than 1 means products A and B are more likely to be purchased together whereas a Lift of less than 1 indicates the two products are unlikely to be bought together. Lift can be computed  by dividing Confidence(A -> B) divided by Support(B). Mathematically it can be represented as:
 
-<img width="468" height="43" alt="image" src="https://github.com/user-attachments/assets/ee7815f5-c6b0-47fc-aff7-5f58c06e2446" />
+<img width="588" height="154" alt="image" src="https://github.com/user-attachments/assets/a5635d67-6bc4-42a6-b026-aa1645bcd724" />
 
 We examine these rules and visualise to spot insightful patterns and trends in the customer’s purchasing behaviour. To ensure that only the most dependable and practical rules are left, association rules a created by setting minimum tresholds for confidence and lift. Sorting by confidence and lift shows us the most valuable associations, and a scatter plot visually shows the relationship between support, confidence, and lift. High-lift, high-confidence rules are especially useful as they display strong connections between items. This can support retail strategies like personalised product recommendations. 
 
-<img width="264" height="251" alt="image" src="https://github.com/user-attachments/assets/401ef3b7-a2c8-4cf9-bd9f-20b75665dd7e" />
+<img width="706" height="660" alt="image" src="https://github.com/user-attachments/assets/ed5e21d6-d4de-464d-aad6-762bbe42b6b1" />
 
-<img width="286" height="93" alt="image" src="https://github.com/user-attachments/assets/03c7cc73-66b8-454b-b193-dd0f85d7a8fd" />
+<img width="750" height="254" alt="image" src="https://github.com/user-attachments/assets/666d0ed4-01ee-4d3a-8415-ab43ae12c79f" />
 
 ## Results
 ### Visualising Frequent Itemsets
@@ -51,9 +52,9 @@ The data is visualized using a histogram and barplot. The distribution of freque
 
 The top 15 most frequent item combinations, illustrated in Figure 11 shows the specific items and groups of items that are purchased together often; these include ‘white hanging heart t-light holder’, ‘regency cake stand 3-tier’ and ‘baking set 9 piece retrospot’. ‘White hanging heart t-light holder’ is most popular as it is in 26% of all purchases with ‘regency cake stand 3-tier’ trailing closely behind as the second most popular item in 23% of all purchases. Overall, this bar chart gives a detailed view of online retail store’s best-selling products.
 
-<img width="337" height="184" alt="image" src="https://github.com/user-attachments/assets/8cc02a3b-a4ba-48c2-a21f-79c432199979" />
+<img width="990" height="526" alt="image" src="https://github.com/user-attachments/assets/4f7964c1-536e-4c91-8d97-7aba74e85b96" />
 
-<img width="334" height="170" alt="image" src="https://github.com/user-attachments/assets/9419b0b2-f1e9-4ab7-9d70-4238b7c420a4" />
+<img width="936" height="464" alt="image" src="https://github.com/user-attachments/assets/28916c7c-b2d8-4417-8e02-9234b6fdd038" />
 
 ### Visualising Association Rules
 To visualise the association rules, we will focus on the relationships between support, confidence and lift. The relationship between the three is visualised using a scatterplot and heatmap. 
@@ -62,9 +63,9 @@ Figure 13 displays support on the x-axis and confidence on the y-axis, with poin
 
 A heatmap of the top 10 rules by lift as seen in Figure 14 gives a detailed view of the strongest rules. For example, the rule ‘poppy’s playhouse kitchen’ leading to ‘poppy’s playhouse bedroom’ produces the highest lift (13.0), indicating a strong association. The rule ‘regency cakestand 3 tier, roses regency teacup and saucer’ leading to ‘green regency teacup and saucer’ has a relatively lower lift (11.0), but still indicates a strong association. The color gradient shows lift values, darker colors represent lower lift and lights colors represent higher lift. 
 
-<img width="297" height="187" alt="image" src="https://github.com/user-attachments/assets/3e93e903-3704-457e-85bf-729854c53a08" />
+<img width="876" height="496" alt="image" src="https://github.com/user-attachments/assets/6418e214-5fc0-4cbf-bbcd-ec8e9d09b6c9" />
 
-<img width="258" height="203" alt="image" src="https://github.com/user-attachments/assets/29d356ea-aa60-4c8c-bc34-8cc2c3af4f6f" /> 
+<img width="838" height="604" alt="image" src="https://github.com/user-attachments/assets/072fdfd1-c28f-48e3-bd34-2517ab1db57a" />
 
 ## Results and Interpretation
 The analysis revealed that most frequent itemsets consisted of single items, with 358 itemsets of length 1 and only a small number of larger itemsets. The top 5 items by support (frequency of occurrence in transactions) are:
