@@ -131,11 +131,24 @@ Here is how feature importance is extracted for each specific model:
 <img width="468" height="278" alt="image" src="https://github.com/user-attachments/assets/cb8d412e-f645-4c31-936d-55becf58e0a3" />
 <img width="468" height="279" alt="image" src="https://github.com/user-attachments/assets/aa5e4307-f960-40e9-8be6-504ba5de9f11" />
 
+Across all model runs using XGBoost and Random Forest, the same core features consistently ranked as the most important indicators of customer churn. Other frequent indicators include Utilization Ratio, Count Change from Q4 to Q1, and Months Inactive in the last 12 Months, all of which point to behavioral patterns of declining bank usage. Ultimately, these features tie back to a drop in financial interactions, showing that churning happens when a customer's transactional activity and engagement slow down, giving banks a clear warning sign to monitor.
 
+The most important data features identified by the models are:
+1. Total Transaction Count: Ranked number 1 across all models.
+2. Total Transaction Amount: Consistently ranked in the top 3.
+3. Total Revolving Balance: Consistently ranked in the top 3.
 
 **ROC Curve**
 
+ROC curve was also prepared but it shows minimal differences between each variation of the model across the 3 model that we have tested Although there are no significant differences from the variations of the same model, XGBoost and Random Forest perform better than Logistic Regression with a difference of 0.07 in AUC. 
+
+<img width="468" height="365" alt="image" src="https://github.com/user-attachments/assets/9bf5b57b-35fb-4d2c-bcc5-9c3265f4e97a" />
+<img width="468" height="367" alt="image" src="https://github.com/user-attachments/assets/e2331a67-4417-411a-992c-df38cf53962e" />
+<img width="468" height="363" alt="image" src="https://github.com/user-attachments/assets/a70e3b2b-d9cd-4b0c-bdc3-ccc98dbafc7b" />
+
 **Confusion Matrices**
+
+With the Matrices, we will be able to see how each model performs much more easily, as we are looking for the least false positive (avoid flagging loyal customers) and False Negative (able to catch more churners). 
 
 **Results from from Stratified K Fold with Cross Validation**
 
