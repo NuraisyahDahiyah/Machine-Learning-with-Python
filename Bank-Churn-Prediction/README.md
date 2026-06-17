@@ -142,13 +142,26 @@ The most important data features identified by the models are:
 
 ROC curve was also prepared but it shows minimal differences between each variation of the model across the 3 model that we have tested Although there are no significant differences from the variations of the same model, XGBoost and Random Forest perform better than Logistic Regression with a difference of 0.07 in AUC. 
 
-<img width="468" height="365" alt="image" src="https://github.com/user-attachments/assets/9bf5b57b-35fb-4d2c-bcc5-9c3265f4e97a" />
-<img width="468" height="367" alt="image" src="https://github.com/user-attachments/assets/e2331a67-4417-411a-992c-df38cf53962e" />
-<img width="468" height="363" alt="image" src="https://github.com/user-attachments/assets/a70e3b2b-d9cd-4b0c-bdc3-ccc98dbafc7b" />
+<img width="234" height="185" alt="image" src="https://github.com/user-attachments/assets/9bf5b57b-35fb-4d2c-bcc5-9c3265f4e97a" />
+<img width="234" height="185" alt="image" src="https://github.com/user-attachments/assets/e2331a67-4417-411a-992c-df38cf53962e" />
+<img width="234" height="185" alt="image" src="https://github.com/user-attachments/assets/a70e3b2b-d9cd-4b0c-bdc3-ccc98dbafc7b" />
 
 **Confusion Matrices**
 
-With the Matrices, we will be able to see how each model performs much more easily, as we are looking for the least false positive (avoid flagging loyal customers) and False Negative (able to catch more churners). 
+Confusion matrices are used to easily evaluate model performance, focusing heavily on minimizing false positives (wrongly flagging loyal customers) and false negatives (missing actual churners). Because banks generally prioritize catching as many churners as possible over keeping false positives low, the ideal setup varies by algorithm.
+
+The performance breakdowns for each algorithm are as follows:
+1. **Random Forest:** The SMOTE version is the most effective overall because it catches the most churners (188), though it yields 31 false positives. In contrast, the Class Weighted version minimizes false positives to 12 but misses 45 churners, while the Plain version catches 173 churners with 14 false positives.
+
+<img width="638" height="265" alt="image" src="https://github.com/user-attachments/assets/d4b1ae15-9f1c-45d9-bcc4-10ef86872765" />
+
+3. **Logistic Regression:** Class Weighting provides the most balanced performance here by catching 167 churners with only 12 false positives. SMOTE catches the most churners (178) but is unacceptable because it flags more loyal customers (185) than actual churners, while the Plain version performs the worst by missing 106 churners.
+
+<img width="638" height="265" alt="image" src="https://github.com/user-attachments/assets/214033ba-fd58-4a66-b502-0004ae1c8970" />
+
+5. **XGBoost:** The SMOTE version delivers the highest recall across all configurations, catching 190 out of 212 churners with 26 false positives. The Plain version achieves the highest overall accuracy and best generalization by catching 180 churners with only 9 false positives, while the Class Weighted version performs the worst of the three XGBoost variations.
+
+<img width="638" height="265" alt="image" src="https://github.com/user-attachments/assets/6f9b8355-b7bf-4484-a117-e734b001d33b" />
 
 **Results from from Stratified K Fold with Cross Validation**
 
