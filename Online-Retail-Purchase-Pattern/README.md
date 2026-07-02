@@ -6,6 +6,8 @@ Retailers who leverage customer purchasing behaviour data can potentially increa
 
 By using Association Rule Mining, we will investigate customer’s purchasing patterns of an online retail store to identify frequent itemset and the presence of strong association rules. Findings from the analysis will be utilised to apply customer-centric strategies in marketing, optimised inventory management, and strengthen product recommendations.
 
+Dataset: https://www.kaggle.com/datasets/mashlyn/online-retail-ii-uci/data
+
 ## Objectives 
 1. To apply the Apriori algorithm to identify frequent itemsets and uncover meaningful associations between products based on support, confidence, and lift.
 2. To generate actionable insights from purchase patterns that support more effective product placement, inventory decisions, and marketing strategies.
